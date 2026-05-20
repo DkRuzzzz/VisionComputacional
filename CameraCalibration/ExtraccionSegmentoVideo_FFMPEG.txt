@@ -1,0 +1,20 @@
+
+#Esto extrae los frames de un video
+
+ffmpeg -framerate 30 -i "Video-HH__%05d.png" WIN_20260519_09_23_12_Pro.mp4
+
+
+#Esto extrae un segmento de video de otro video
+
+ffmpeg -ss 6:30 -i SUNP0061.AVI -t 3:20 -c copy Vuelo61.avi
+
+-ss tiempo de inicio.
+-t duración del segmento.
+-i Archivo de entrada.
+
+Esto junta frames y construye un video
+
+ffmpeg -framerate 30 -i "Out_%05d.png" Video_Out.avi #Este resulto ser medio chafa, el que sigue no tanto
+
+
+ffmpeg -i "PelotaVe_%04d.png" -c:v libx264 -tune film -preset slow -crf 22 -c:a copy PelotaVerdeF.mkv

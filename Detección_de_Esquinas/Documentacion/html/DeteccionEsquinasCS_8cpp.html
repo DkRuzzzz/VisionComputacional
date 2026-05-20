@@ -1,0 +1,898 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Deteccion de Esquinas de Harris: Referencia del archivo DeteccionEsquinasCS.cpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Deteccion de Esquinas de Harris<span id="projectnumber">&#160;1.0</span>
+   </div>
+   <div id="projectbrief">Programa que demuestra como realizar el cómputo del detector de esquinas de Harris.</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Buscar');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Cargando...</div>
+<div class="SRStatus" id="Searching">Buscando...</div>
+<div class="SRStatus" id="NoMatches">Nada coincide</div>
+</div>
+</div>
+</div>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">Clases</a> &#124;
+<a href="#define-members">defines</a> &#124;
+<a href="#func-members">Funciones</a>  </div>
+  <div class="headertitle"><div class="title">Referencia del archivo DeteccionEsquinasCS.cpp</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;opencv2/opencv.hpp&quot;</code><br />
+<code>#include &quot;opencv2/highgui/highgui.hpp&quot;</code><br />
+<code>#include &lt;iostream&gt;</code><br />
+<code>#include &lt;vector&gt;</code><br />
+<code>#include &lt;cstdio&gt;</code><br />
+<code>#include &lt;Mosaic.h&gt;</code><br />
+<code>#include &lt;cctype&gt;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Gráfico de dependencias incluidas en DeteccionEsquinasCS.cpp:</div>
+<div class="dyncontent">
+<div class="center"><img src="DeteccionEsquinasCS_8cpp__incl.png" border="0" usemap="#aDeteccionEsquinasCS_8cpp" alt=""/></div>
+<map name="aDeteccionEsquinasCS_8cpp" id="aDeteccionEsquinasCS_8cpp">
+<area shape="rect" title=" " alt="" coords="460,5,649,31"/>
+<area shape="rect" title=" " alt="" coords="5,79,160,104"/>
+<area shape="poly" title=" " alt="" coords="479,33,172,79,172,74,478,28"/>
+<area shape="rect" title=" " alt="" coords="185,79,394,104"/>
+<area shape="poly" title=" " alt="" coords="513,33,346,78,345,72,511,28"/>
+<area shape="rect" title=" " alt="" coords="419,79,499,104"/>
+<area shape="poly" title=" " alt="" coords="541,33,487,72,484,68,538,29"/>
+<area shape="rect" title=" " alt="" coords="523,79,586,104"/>
+<area shape="poly" title=" " alt="" coords="557,31,557,65,552,65,552,31"/>
+<area shape="rect" title=" " alt="" coords="611,79,672,104"/>
+<area shape="poly" title=" " alt="" coords="570,29,618,68,615,72,567,33"/>
+<area shape="rect" title=" " alt="" coords="696,79,776,104"/>
+<area shape="poly" title=" " alt="" coords="585,28,695,71,693,76,583,33"/>
+<area shape="rect" title=" " alt="" coords="801,79,866,104"/>
+<area shape="poly" title=" " alt="" coords="600,28,788,76,787,81,599,33"/>
+</map>
+</div>
+</div>
+<p><a href="DeteccionEsquinasCS_8cpp_source.html">Ir al código fuente de este archivo.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Clases</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfilterData.html">filterData</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Esta estructura agrupa los filtros que se van a aplicar a la imagen, la desviación estandar con la que se definen los filtros, y el factor de conversion entre el numero de posiciones de la barra deslizante de control y el valor que toma la desviacion estandar en un momento dado. La estructura es útil pues contiene los datos que son necesarios para modificar el estado del programa antes las acciones del usuario usando la barra deslizante.  <a href="structfilterData.html#details">Más...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structHarrisData.html">HarrisData</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+defines</h2></td></tr>
+<tr class="memitem:a3aad60d733afca4a443a5cc9506b22af" id="r_a3aad60d733afca4a443a5cc9506b22af"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="DeteccionEsquinasCS_8cpp.html#a3aad60d733afca4a443a5cc9506b22af">IM_HEIGHT</a>&#160;&#160;&#160;240</td></tr>
+<tr class="memdesc:a3aad60d733afca4a443a5cc9506b22af"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lo alto de la imagen.  <br /></td></tr>
+<tr class="separator:a3aad60d733afca4a443a5cc9506b22af"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa28ce514073243f20b2ad63bd15348bc" id="r_aa28ce514073243f20b2ad63bd15348bc"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="DeteccionEsquinasCS_8cpp.html#aa28ce514073243f20b2ad63bd15348bc">IM_WIDTH</a>&#160;&#160;&#160;320</td></tr>
+<tr class="memdesc:aa28ce514073243f20b2ad63bd15348bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">El ancho de la imagen.  <br /></td></tr>
+<tr class="separator:aa28ce514073243f20b2ad63bd15348bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a61a37eec7a9ecd05f38728a37f07bf95" id="r_a61a37eec7a9ecd05f38728a37f07bf95"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="DeteccionEsquinasCS_8cpp.html#a61a37eec7a9ecd05f38728a37f07bf95">K_MAX</a>&#160;&#160;&#160;0.15</td></tr>
+<tr class="memdesc:a61a37eec7a9ecd05f38728a37f07bf95"><td class="mdescLeft">&#160;</td><td class="mdescRight">El valor máximo del parametro del detector de esquinas de Harris.  <br /></td></tr>
+<tr class="separator:a61a37eec7a9ecd05f38728a37f07bf95"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2f4f46b02b61918b9ce0de77043af942" id="r_a2f4f46b02b61918b9ce0de77043af942"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="DeteccionEsquinasCS_8cpp.html#a2f4f46b02b61918b9ce0de77043af942">K_SLIDE_MAX</a>&#160;&#160;&#160;512</td></tr>
+<tr class="memdesc:a2f4f46b02b61918b9ce0de77043af942"><td class="mdescLeft">&#160;</td><td class="mdescRight">El número máximo de pasos que tiene el control de barra deslizante asociado a la constante K del detector de esquinas de Harris en el GUI.  <br /></td></tr>
+<tr class="separator:a2f4f46b02b61918b9ce0de77043af942"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a939b51147ef1ab77b59643dea461ba5f" id="r_a939b51147ef1ab77b59643dea461ba5f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="DeteccionEsquinasCS_8cpp.html#a939b51147ef1ab77b59643dea461ba5f">S_SLIDE_MAX</a>&#160;&#160;&#160;512</td></tr>
+<tr class="memdesc:a939b51147ef1ab77b59643dea461ba5f"><td class="mdescLeft">&#160;</td><td class="mdescRight">El número máximo de pasos que tiene el control de barra deslizante asociuada a la desviación estandar usada al derivar la imagene en el GUI.  <br /></td></tr>
+<tr class="separator:a939b51147ef1ab77b59643dea461ba5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a522ee66cfb45d054040486ba8109aecd" id="r_a522ee66cfb45d054040486ba8109aecd"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="DeteccionEsquinasCS_8cpp.html#a522ee66cfb45d054040486ba8109aecd">STD_MAX</a>&#160;&#160;&#160;10.</td></tr>
+<tr class="memdesc:a522ee66cfb45d054040486ba8109aecd"><td class="mdescLeft">&#160;</td><td class="mdescRight">El valor de desviación estandar máximo.  <br /></td></tr>
+<tr class="separator:a522ee66cfb45d054040486ba8109aecd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a68c709cd29517003a9730f640e9fc39a" id="r_a68c709cd29517003a9730f640e9fc39a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="DeteccionEsquinasCS_8cpp.html#a68c709cd29517003a9730f640e9fc39a">W_MAX</a>&#160;&#160;&#160;50.</td></tr>
+<tr class="memdesc:a68c709cd29517003a9730f640e9fc39a"><td class="mdescLeft">&#160;</td><td class="mdescRight">El valor máximo del tamaño de la ventana usado por el detector de esquinas de Harris.  <br /></td></tr>
+<tr class="separator:a68c709cd29517003a9730f640e9fc39a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3a0bd0af99990430d25417c5e3cd2c1b" id="r_a3a0bd0af99990430d25417c5e3cd2c1b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="DeteccionEsquinasCS_8cpp.html#a3a0bd0af99990430d25417c5e3cd2c1b">W_SLIDE_MAX</a>&#160;&#160;&#160;50</td></tr>
+<tr class="memdesc:a3a0bd0af99990430d25417c5e3cd2c1b"><td class="mdescLeft">&#160;</td><td class="mdescRight">El número máximo de pasos que tiene el control de barra deslizante asociado a la constante K del detector de esquinas de Harris en el GUI.  <br /></td></tr>
+<tr class="separator:a3a0bd0af99990430d25417c5e3cd2c1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Funciones</h2></td></tr>
+<tr class="memitem:abadfd1bea7750a41a0a80052d36b915b" id="r_abadfd1bea7750a41a0a80052d36b915b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="DeteccionEsquinasCS_8cpp.html#abadfd1bea7750a41a0a80052d36b915b">calculoFiltroDiffGaussiano</a> (Mat &amp;DG, float s)</td></tr>
+<tr class="memdesc:abadfd1bea7750a41a0a80052d36b915b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Esta funcion calcula filtro unidimensional horizontal que codifica los parametros de la derivada de una Gaussiana.  <br /></td></tr>
+<tr class="separator:abadfd1bea7750a41a0a80052d36b915b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1ad4cc8aad93cec201fa68e59c7b359f" id="r_a1ad4cc8aad93cec201fa68e59c7b359f"><td class="memTemplParams" colspan="2">template&lt;typename _Tp &gt; </td></tr>
+<tr class="memitem:a1ad4cc8aad93cec201fa68e59c7b359f"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="DeteccionEsquinasCS_8cpp.html#a1ad4cc8aad93cec201fa68e59c7b359f">cumSum</a> (Mat_&lt; _Tp &gt; &amp;src, Mat_&lt; _Tp &gt; &amp;dst)</td></tr>
+<tr class="memdesc:a1ad4cc8aad93cec201fa68e59c7b359f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Esta función construye la matriz de "acumulación" de una matriz dada. Una matriz de acumulación contiene la suma acumulada de los elementos de la matriz: i.e. cada elemento de la matriz acumulada es igual a la suma de todos los elementos de la matriz de entrada cuyas coordenadas son ámbas menores a las coordenadas al elementos de la matriz de acumulación que se está calculando. Por ejemplo, el elemento <picture><source srcset="form_0_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$(5,4)$" src="form_0.png" width="26" height="14"/></picture> de una matriz de acumulación es igual a <picture><source srcset="form_1_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$\sum_{i=0}^4\sum{j=0}^{3}I(i,j)$" src="form_1.png" width="113" height="16"/></picture> donde <picture><source srcset="form_2_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$I$" src="form_2.png" width="8" height="10"/></picture> es la imagen original.  <br /></td></tr>
+<tr class="separator:a1ad4cc8aad93cec201fa68e59c7b359f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5b5ddd4fc2f158d1bac2ff5a05666118" id="r_a5b5ddd4fc2f158d1bac2ff5a05666118"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="DeteccionEsquinasCS_8cpp.html#a5b5ddd4fc2f158d1bac2ff5a05666118">findCorners</a> (Mat &amp;Ix, Mat Iy, Mat &amp;C, int w, double k)</td></tr>
+<tr class="memdesc:a5b5ddd4fc2f158d1bac2ff5a05666118"><td class="mdescLeft">&#160;</td><td class="mdescRight">Esta funcion calcula la medida del detector de esquinas de Harris definida por la siguiente fórmula: <picture><source srcset="form_3_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$C(G) = \det |G| - k trace^2(G)$" src="form_3.png" width="156" height="15"/></picture>, donde <picture><source srcset="form_4_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$G=\left[\begin{array}{cc} \sum_{\tilde{x}} I_x^2(\tilde{x}) &amp; \sum_{\tilde{x}} I_x(\tilde{x})I_y(\tilde{x})\\ \sum_{\tilde{x}} I_x(\tilde{x})I_y(\tilde{x}) &amp;  \sum_{\tilde{x}}I_y^2(\tilde{x}) \end{array}\right]$" src="form_4.png" width="219" height="33"/></picture> donde <picture><source srcset="form_5_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$\tilde{x} \in W(x)$" src="form_5.png" width="53" height="14"/></picture> y <picture><source srcset="form_6_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$W(x)$" src="form_6.png" width="29" height="14"/></picture> es una ventana de dimensiones <picture><source srcset="form_7_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$ w \times w$" src="form_7.png" width="35" height="8"/></picture> centrada en la coordenada <picture><source srcset="form_8_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$x$" src="form_8.png" width="8" height="6"/></picture>. La función calcula la suma acumulada de la matriz que almacena los cuadtrados y productos de las derivadas espaciales de la imagen: ( <picture><source srcset="form_9_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$[I^2_x,\,I^2_y,\,I_xI_y]$" src="form_9.png" width="69" height="16"/></picture>) para cada pixel en la image, con el fin de simplificar el cómputo de la suma; Esta suma se calcula como sigue: <picture><source srcset="form_10_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$\sum_{\tilde{x} \in W(x)}g(\tilde{x}) = cumG(x+[w2,w2]^\top) +  cumG(x-[w2 - 1,w2 - 1]^\top)  -  cumG(x + [w2,-w2-1]^\top) - cumG(x+[-w2-1,w2]^\top)$" src="form_10.png" width="429" height="33"/></picture> donde <picture><source srcset="form_11_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$x=[i,j]^\top$" src="form_11.png" width="55" height="15"/></picture> es la coordenada donde está centrada la ventana de cómputo y <picture><source srcset="form_12_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$w2=\frac{w}{2}$" src="form_12.png" width="43" height="15"/></picture>.  <br /></td></tr>
+<tr class="separator:a5b5ddd4fc2f158d1bac2ff5a05666118"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6a187f2ad0c45dc8868860243d782ca1" id="r_a6a187f2ad0c45dc8868860243d782ca1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="DeteccionEsquinasCS_8cpp.html#a6a187f2ad0c45dc8868860243d782ca1">kChange</a> (int pos, void *data)</td></tr>
+<tr class="memdesc:a6a187f2ad0c45dc8868860243d782ca1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Esta funcion modifica el valor del parámetro k, almacenado en una estructura del tipo <a class="el" href="structHarrisData.html">HarrisData</a>. Esta funcion es invocada indirectamente por el usuario al interactuar con la barra deslizante.  <br /></td></tr>
+<tr class="separator:a6a187f2ad0c45dc8868860243d782ca1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3c04138a5bfe5d72780bb7e82a18e627" id="r_a3c04138a5bfe5d72780bb7e82a18e627"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="DeteccionEsquinasCS_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627">main</a> (int argc, char **argv)</td></tr>
+<tr class="separator:a3c04138a5bfe5d72780bb7e82a18e627"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad5b5a12f78acad13124e6321536ceec4" id="r_ad5b5a12f78acad13124e6321536ceec4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="DeteccionEsquinasCS_8cpp.html#ad5b5a12f78acad13124e6321536ceec4">stdChange</a> (int pos, void *data)</td></tr>
+<tr class="memdesc:ad5b5a12f78acad13124e6321536ceec4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Esta funcion modifica el valor de la desviación estandar y los filtros almacenados en (<a class="el" href="structfilterData.html" title="Esta estructura agrupa los filtros que se van a aplicar a la imagen, la desviación estandar con la qu...">filterData</a> *)data. Esta funcion es invocada indirectamente por el usuario al interactuar con la barra deslizante.  <br /></td></tr>
+<tr class="separator:ad5b5a12f78acad13124e6321536ceec4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8836cca009f6227f83589d7da504bcd0" id="r_a8836cca009f6227f83589d7da504bcd0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="DeteccionEsquinasCS_8cpp.html#a8836cca009f6227f83589d7da504bcd0">wChange</a> (int pos, void *data)</td></tr>
+<tr class="memdesc:a8836cca009f6227f83589d7da504bcd0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Esta funcion modifica el valor del parámetro w, almacenado en una estructura del tipo <a class="el" href="structHarrisData.html">HarrisData</a>. Esta funcion es invocada indirectamente por el usuario al interactuar con la barra deslizante.  <br /></td></tr>
+<tr class="separator:a8836cca009f6227f83589d7da504bcd0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Documentación de «define»</h2>
+<a id="a3aad60d733afca4a443a5cc9506b22af" name="a3aad60d733afca4a443a5cc9506b22af"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3aad60d733afca4a443a5cc9506b22af">&#9670;&#160;</a></span>IM_HEIGHT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define IM_HEIGHT&#160;&#160;&#160;240</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Lo alto de la imagen. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="DeteccionEsquinasCS_8cpp_source.html#l00023">23</a> del archivo <a class="el" href="DeteccionEsquinasCS_8cpp_source.html">DeteccionEsquinasCS.cpp</a>.</p>
+
+</div>
+</div>
+<a id="aa28ce514073243f20b2ad63bd15348bc" name="aa28ce514073243f20b2ad63bd15348bc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa28ce514073243f20b2ad63bd15348bc">&#9670;&#160;</a></span>IM_WIDTH</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define IM_WIDTH&#160;&#160;&#160;320</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>El ancho de la imagen. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="DeteccionEsquinasCS_8cpp_source.html#l00022">22</a> del archivo <a class="el" href="DeteccionEsquinasCS_8cpp_source.html">DeteccionEsquinasCS.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a61a37eec7a9ecd05f38728a37f07bf95" name="a61a37eec7a9ecd05f38728a37f07bf95"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a61a37eec7a9ecd05f38728a37f07bf95">&#9670;&#160;</a></span>K_MAX</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define K_MAX&#160;&#160;&#160;0.15</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>El valor máximo del parametro del detector de esquinas de Harris. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="DeteccionEsquinasCS_8cpp_source.html#l00016">16</a> del archivo <a class="el" href="DeteccionEsquinasCS_8cpp_source.html">DeteccionEsquinasCS.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a2f4f46b02b61918b9ce0de77043af942" name="a2f4f46b02b61918b9ce0de77043af942"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2f4f46b02b61918b9ce0de77043af942">&#9670;&#160;</a></span>K_SLIDE_MAX</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define K_SLIDE_MAX&#160;&#160;&#160;512</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>El número máximo de pasos que tiene el control de barra deslizante asociado a la constante K del detector de esquinas de Harris en el GUI. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="DeteccionEsquinasCS_8cpp_source.html#l00017">17</a> del archivo <a class="el" href="DeteccionEsquinasCS_8cpp_source.html">DeteccionEsquinasCS.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a939b51147ef1ab77b59643dea461ba5f" name="a939b51147ef1ab77b59643dea461ba5f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a939b51147ef1ab77b59643dea461ba5f">&#9670;&#160;</a></span>S_SLIDE_MAX</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define S_SLIDE_MAX&#160;&#160;&#160;512</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>El número máximo de pasos que tiene el control de barra deslizante asociuada a la desviación estandar usada al derivar la imagene en el GUI. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="DeteccionEsquinasCS_8cpp_source.html#l00014">14</a> del archivo <a class="el" href="DeteccionEsquinasCS_8cpp_source.html">DeteccionEsquinasCS.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a522ee66cfb45d054040486ba8109aecd" name="a522ee66cfb45d054040486ba8109aecd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a522ee66cfb45d054040486ba8109aecd">&#9670;&#160;</a></span>STD_MAX</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define STD_MAX&#160;&#160;&#160;10.</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>El valor de desviación estandar máximo. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="DeteccionEsquinasCS_8cpp_source.html#l00013">13</a> del archivo <a class="el" href="DeteccionEsquinasCS_8cpp_source.html">DeteccionEsquinasCS.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a68c709cd29517003a9730f640e9fc39a" name="a68c709cd29517003a9730f640e9fc39a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a68c709cd29517003a9730f640e9fc39a">&#9670;&#160;</a></span>W_MAX</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define W_MAX&#160;&#160;&#160;50.</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>El valor máximo del tamaño de la ventana usado por el detector de esquinas de Harris. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="DeteccionEsquinasCS_8cpp_source.html#l00019">19</a> del archivo <a class="el" href="DeteccionEsquinasCS_8cpp_source.html">DeteccionEsquinasCS.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a3a0bd0af99990430d25417c5e3cd2c1b" name="a3a0bd0af99990430d25417c5e3cd2c1b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3a0bd0af99990430d25417c5e3cd2c1b">&#9670;&#160;</a></span>W_SLIDE_MAX</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define W_SLIDE_MAX&#160;&#160;&#160;50</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>El número máximo de pasos que tiene el control de barra deslizante asociado a la constante K del detector de esquinas de Harris en el GUI. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="DeteccionEsquinasCS_8cpp_source.html#l00020">20</a> del archivo <a class="el" href="DeteccionEsquinasCS_8cpp_source.html">DeteccionEsquinasCS.cpp</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Documentación de funciones</h2>
+<a id="abadfd1bea7750a41a0a80052d36b915b" name="abadfd1bea7750a41a0a80052d36b915b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abadfd1bea7750a41a0a80052d36b915b">&#9670;&#160;</a></span>calculoFiltroDiffGaussiano()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void calculoFiltroDiffGaussiano </td>
+          <td>(</td>
+          <td class="paramtype">Mat &amp;&#160;</td>
+          <td class="paramname"><em>DG</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>s</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Esta funcion calcula filtro unidimensional horizontal que codifica los parametros de la derivada de una Gaussiana. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Mat</td><td>&amp;DG -&gt; La matriz en donde se van a regresar los parámetros del filtro. </td></tr>
+    <tr><td class="paramname">float</td><td>s -&gt; La desviación estandar que queremos tenga el filtro. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definición en la línea <a class="el" href="DeteccionEsquinasCS_8cpp_source.html#l00076">76</a> del archivo <a class="el" href="DeteccionEsquinasCS_8cpp_source.html">DeteccionEsquinasCS.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   77</span>{</div>
+<div class="line"><span class="lineno">   78</span>    <span class="keywordtype">int</span> filterSize, centerIdx, i, j;</div>
+<div class="line"><span class="lineno">   79</span>    <span class="keywordtype">float</span> K, s2, x;</div>
+<div class="line"><span class="lineno">   80</span> </div>
+<div class="line"><span class="lineno">   81</span>    centerIdx = ceil(s * 3);</div>
+<div class="line"><span class="lineno">   82</span>    filterSize = centerIdx * 2 + 1;</div>
+<div class="line"><span class="lineno">   83</span>    DG = Mat::zeros(Size(filterSize, 1), CV_64FC1);</div>
+<div class="line"><span class="lineno">   84</span>    K = 1./(sqrt(2*M_PI)*s*s*s);</div>
+<div class="line"><span class="lineno">   85</span>    s2 = s * s;</div>
+<div class="line"><span class="lineno">   86</span>    DG.at&lt;<span class="keywordtype">double</span>&gt;(0,centerIdx) =  0;</div>
+<div class="line"><span class="lineno">   87</span>    x = 1.f;</div>
+<div class="line"><span class="lineno">   88</span>    <span class="keywordflow">for</span> (j = centerIdx - 1, i = centerIdx + 1; i &lt; DG.cols; ++i, --j, x+=1.f)</div>
+<div class="line"><span class="lineno">   89</span>    {</div>
+<div class="line"><span class="lineno">   90</span>        DG.at&lt;<span class="keywordtype">double</span>&gt;(0,i) = - 0.5 * x * K * (exp(-0.5*x*x/s2)+exp(-0.5*pow(x+1.,2)/s2));</div>
+<div class="line"><span class="lineno">   91</span>        DG.at&lt;<span class="keywordtype">double</span>&gt;(0,j) = - DG.at&lt;<span class="keywordtype">double</span>&gt;(0,i);</div>
+<div class="line"><span class="lineno">   92</span>    }</div>
+<div class="line"><span class="lineno">   93</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a1ad4cc8aad93cec201fa68e59c7b359f" name="a1ad4cc8aad93cec201fa68e59c7b359f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1ad4cc8aad93cec201fa68e59c7b359f">&#9670;&#160;</a></span>cumSum()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename _Tp &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">template&lt; typename _Tp &gt; void cumSum </td>
+          <td>(</td>
+          <td class="paramtype">Mat_&lt; _Tp &gt; &amp;&#160;</td>
+          <td class="paramname"><em>src</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Mat_&lt; _Tp &gt; &amp;&#160;</td>
+          <td class="paramname"><em>dst</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Esta función construye la matriz de "acumulación" de una matriz dada. Una matriz de acumulación contiene la suma acumulada de los elementos de la matriz: i.e. cada elemento de la matriz acumulada es igual a la suma de todos los elementos de la matriz de entrada cuyas coordenadas son ámbas menores a las coordenadas al elementos de la matriz de acumulación que se está calculando. Por ejemplo, el elemento <picture><source srcset="form_0_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$(5,4)$" src="form_0.png" width="26" height="14"/></picture> de una matriz de acumulación es igual a <picture><source srcset="form_1_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$\sum_{i=0}^4\sum{j=0}^{3}I(i,j)$" src="form_1.png" width="113" height="16"/></picture> donde <picture><source srcset="form_2_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$I$" src="form_2.png" width="8" height="10"/></picture> es la imagen original. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Mat_&lt;_Tp&gt;</td><td>&amp;src A referencia a la matriz de origen. </td></tr>
+    <tr><td class="paramname">Mat_&lt;_Tp&gt;</td><td>&amp;dst A referencia a la matriz donde se almacenará elñ resultado. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definición en la línea <a class="el" href="DeteccionEsquinasCS_8cpp_source.html#l00103">103</a> del archivo <a class="el" href="DeteccionEsquinasCS_8cpp_source.html">DeteccionEsquinasCS.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  104</span>{</div>
+<div class="line"><span class="lineno">  105</span>    <span class="keywordtype">int</span> i, j;</div>
+<div class="line"><span class="lineno">  106</span>    _Tp *apud, *apud0, *apus, *end;</div>
+<div class="line"><span class="lineno">  107</span> </div>
+<div class="line"><span class="lineno">  108</span>    Size sz (src.cols, src.rows);</div>
+<div class="line"><span class="lineno">  109</span>    dst = Mat_&lt;_Tp&gt;::zeros (sz);</div>
+<div class="line"><span class="lineno">  110</span> </div>
+<div class="line"><span class="lineno">  111</span>    <span class="comment">//Se calcula el primer renglon de la matriz de acumulación.</span></div>
+<div class="line"><span class="lineno">  112</span>    apus = src.template ptr&lt;_Tp&gt;(0);</div>
+<div class="line"><span class="lineno">  113</span>    end = apus + src.cols;</div>
+<div class="line"><span class="lineno">  114</span>    apud0 = apud = dst.template ptr&lt;_Tp&gt;(0);</div>
+<div class="line"><span class="lineno">  115</span>    *apud = *apus;</div>
+<div class="line"><span class="lineno">  116</span>    <span class="keywordflow">for</span> (++apus, ++apud;apus &lt; end; ++apus, ++apud, ++apud0)</div>
+<div class="line"><span class="lineno">  117</span>        *apud = *apus + *apud0;</div>
+<div class="line"><span class="lineno">  118</span> </div>
+<div class="line"><span class="lineno">  119</span>    <span class="comment">//Ahora se calcula el resto de la matriz de acumulación.</span></div>
+<div class="line"><span class="lineno">  120</span>    <span class="comment">//si dst es la matruz de acumulación y src es la matriz original,</span></div>
+<div class="line"><span class="lineno">  121</span>    <span class="comment">//entonces cada elemento se define como sigue:</span></div>
+<div class="line"><span class="lineno">  122</span>    <span class="comment">//dst(i,j) = src(i,j) + dst(i-1, j) + dst(i, j-1) - dts(i-1, j-1)</span></div>
+<div class="line"><span class="lineno">  123</span>    <span class="keywordflow">for</span> (i = 1; i &lt; sz.height; ++i)</div>
+<div class="line"><span class="lineno">  124</span>    {</div>
+<div class="line"><span class="lineno">  125</span>        apus = src.template ptr&lt;_Tp&gt;(i);</div>
+<div class="line"><span class="lineno">  126</span>        apud = dst.template ptr&lt;_Tp&gt;(i);</div>
+<div class="line"><span class="lineno">  127</span>        apud0 = dst.template ptr&lt;_Tp&gt;(i-1);</div>
+<div class="line"><span class="lineno">  128</span>        *apud = *apus + *apud0; <span class="comment">//El primer elemento de cada renglon es calculado.</span></div>
+<div class="line"><span class="lineno">  129</span>        apud0++;</div>
+<div class="line"><span class="lineno">  130</span>        apud++;</div>
+<div class="line"><span class="lineno">  131</span>        apus++;</div>
+<div class="line"><span class="lineno">  132</span>        <span class="keywordflow">for</span> (j = 1; j &lt; sz.width; ++j, ++apus, ++apud, ++apud0)</div>
+<div class="line"><span class="lineno">  133</span>            *apud = *apus + *apud0 + *(apud - 1) - *(apud0 - 1);</div>
+<div class="line"><span class="lineno">  134</span>    }</div>
+<div class="line"><span class="lineno">  135</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a5b5ddd4fc2f158d1bac2ff5a05666118" name="a5b5ddd4fc2f158d1bac2ff5a05666118"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5b5ddd4fc2f158d1bac2ff5a05666118">&#9670;&#160;</a></span>findCorners()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void findCorners </td>
+          <td>(</td>
+          <td class="paramtype">Mat &amp;&#160;</td>
+          <td class="paramname"><em>Ix</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Mat&#160;</td>
+          <td class="paramname"><em>Iy</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Mat &amp;&#160;</td>
+          <td class="paramname"><em>C</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>w</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>k</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Esta funcion calcula la medida del detector de esquinas de Harris definida por la siguiente fórmula: <picture><source srcset="form_3_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$C(G) = \det |G| - k trace^2(G)$" src="form_3.png" width="156" height="15"/></picture>, donde <picture><source srcset="form_4_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$G=\left[\begin{array}{cc} \sum_{\tilde{x}} I_x^2(\tilde{x}) &amp; \sum_{\tilde{x}} I_x(\tilde{x})I_y(\tilde{x})\\ \sum_{\tilde{x}} I_x(\tilde{x})I_y(\tilde{x}) &amp;  \sum_{\tilde{x}}I_y^2(\tilde{x}) \end{array}\right]$" src="form_4.png" width="219" height="33"/></picture> donde <picture><source srcset="form_5_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$\tilde{x} \in W(x)$" src="form_5.png" width="53" height="14"/></picture> y <picture><source srcset="form_6_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$W(x)$" src="form_6.png" width="29" height="14"/></picture> es una ventana de dimensiones <picture><source srcset="form_7_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$ w \times w$" src="form_7.png" width="35" height="8"/></picture> centrada en la coordenada <picture><source srcset="form_8_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$x$" src="form_8.png" width="8" height="6"/></picture>. La función calcula la suma acumulada de la matriz que almacena los cuadtrados y productos de las derivadas espaciales de la imagen: ( <picture><source srcset="form_9_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$[I^2_x,\,I^2_y,\,I_xI_y]$" src="form_9.png" width="69" height="16"/></picture>) para cada pixel en la image, con el fin de simplificar el cómputo de la suma; Esta suma se calcula como sigue: <picture><source srcset="form_10_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$\sum_{\tilde{x} \in W(x)}g(\tilde{x}) = cumG(x+[w2,w2]^\top) +  cumG(x-[w2 - 1,w2 - 1]^\top)  -  cumG(x + [w2,-w2-1]^\top) - cumG(x+[-w2-1,w2]^\top)$" src="form_10.png" width="429" height="33"/></picture> donde <picture><source srcset="form_11_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$x=[i,j]^\top$" src="form_11.png" width="55" height="15"/></picture> es la coordenada donde está centrada la ventana de cómputo y <picture><source srcset="form_12_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$w2=\frac{w}{2}$" src="form_12.png" width="43" height="15"/></picture>. </p>
+<p>Esta funcion calcula la medida del detector de esquinas de Harris definida por la siguiente fórmula: <picture><source srcset="form_3_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$C(G) = \det |G| - k trace^2(G)$" src="form_3.png" width="156" height="15"/></picture>, donde <picture><source srcset="form_4_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$G=\left[\begin{array}{cc} \sum_{\tilde{x}} I_x^2(\tilde{x}) &amp; \sum_{\tilde{x}} I_x(\tilde{x})I_y(\tilde{x})\\ \sum_{\tilde{x}} I_x(\tilde{x})I_y(\tilde{x}) &amp;  \sum_{\tilde{x}}I_y^2(\tilde{x}) \end{array}\right]$" src="form_4.png" width="219" height="33"/></picture> donde <picture><source srcset="form_5_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$\tilde{x} \in W(x)$" src="form_5.png" width="53" height="14"/></picture> y <picture><source srcset="form_6_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$W(x)$" src="form_6.png" width="29" height="14"/></picture> es una ventana de dimensiones <picture><source srcset="form_7_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$ w \times w$" src="form_7.png" width="35" height="8"/></picture> centrada en la coordenada <picture><source srcset="form_8_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$x$" src="form_8.png" width="8" height="6"/></picture>.</p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Mat</td><td>&amp;Ix La referencia a la matriz que contiene las derivadas horizaontales de la imagen a ser procesadas. </td></tr>
+    <tr><td class="paramname">Mat</td><td>&amp;Iy La referencia a la matriz que contiene las derivadas verticales de la imagen a ser procesadas. </td></tr>
+    <tr><td class="paramname">Mat</td><td>&amp;C La referencia a la matriz donde se almacenará el resultado </td></tr>
+    <tr><td class="paramname">int</td><td>w El parámtro que define el tamaño de la ventana de cómputo. </td></tr>
+    <tr><td class="paramname">double</td><td>k El parámtro que controla el comportamiento del detector de esquinas de Harris (usualmente un valor pequeño). </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definición en la línea <a class="el" href="DeteccionEsquinasCS_8cpp_source.html#l00149">149</a> del archivo <a class="el" href="DeteccionEsquinasCS_8cpp_source.html">DeteccionEsquinasCS.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  150</span>{</div>
+<div class="line"><span class="lineno">  151</span>    Mat_&lt;Vec3d&gt; G, cumG;</div>
+<div class="line"><span class="lineno">  152</span>    <span class="keywordtype">double</span> *ptrC0, *ptrIx, *ptrIy;</div>
+<div class="line"><span class="lineno">  153</span>    Vec3d *ptrg0, *ptrg1, g;</div>
+<div class="line"><span class="lineno">  154</span>    <span class="keywordtype">int</span> i, j, x0, x1, y0, y1, w2;</div>
+<div class="line"><span class="lineno">  155</span> </div>
+<div class="line"><span class="lineno">  156</span>    <span class="comment">//Valida el tamaño de las matrices de derivadas.</span></div>
+<div class="line"><span class="lineno">  157</span>    <span class="keywordflow">if</span> (Ix.cols != Iy.cols || Ix.rows != Iy.rows)</div>
+<div class="line"><span class="lineno">  158</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  159</span> </div>
+<div class="line"><span class="lineno">  160</span>    <span class="comment">//Se asegura que el tamañi de la ventana de cómputo sea un numero impar.</span></div>
+<div class="line"><span class="lineno">  161</span>    <span class="keywordflow">if</span> (! (w % 2))</div>
+<div class="line"><span class="lineno">  162</span>        w++;</div>
+<div class="line"><span class="lineno">  163</span>    w2 = (w-1) / 2;</div>
+<div class="line"><span class="lineno">  164</span> </div>
+<div class="line"><span class="lineno">  165</span>    Size sz(Ix.cols, Ix.rows);</div>
+<div class="line"><span class="lineno">  166</span>    G = Mat::zeros(sz, CV_64FC3);</div>
+<div class="line"><span class="lineno">  167</span>    C = Mat::zeros(sz, CV_64FC1);</div>
+<div class="line"><span class="lineno">  168</span> </div>
+<div class="line"><span class="lineno">  169</span>    </div>
+<div class="line"><span class="lineno">  170</span>    x0 = y0 = w2 + 1;</div>
+<div class="line"><span class="lineno">  171</span>    x1 = Ix.cols - w2 - 1;</div>
+<div class="line"><span class="lineno">  172</span>    y1 = Iy.rows - w2 - 1;</div>
+<div class="line"><span class="lineno">  173</span> </div>
+<div class="line"><span class="lineno">  174</span>    <span class="comment">//Construye una matriz donde cada elemento es del tipo Vec3d que contiene los elementos de la matriz G ([Ix^2,Iy^2, IxIy]).  </span></div>
+<div class="line"><span class="lineno">  175</span>    <span class="keywordflow">for</span> (i = 0; i &lt; sz.height; ++i)</div>
+<div class="line"><span class="lineno">  176</span>    {</div>
+<div class="line"><span class="lineno">  177</span>        ptrg0 = G.ptr&lt;Vec3d&gt;(i);</div>
+<div class="line"><span class="lineno">  178</span>        ptrIx = Ix.ptr&lt;<span class="keywordtype">double</span>&gt;(i);</div>
+<div class="line"><span class="lineno">  179</span>        ptrIy = Iy.ptr&lt;<span class="keywordtype">double</span>&gt;(i);</div>
+<div class="line"><span class="lineno">  180</span>        <span class="keywordflow">for</span> (j = 0; j &lt; sz.width; ++j, ++ptrg0, ++ptrIx, ++ptrIy)</div>
+<div class="line"><span class="lineno">  181</span>            *ptrg0 = Vec3d(*ptrIx * *ptrIx, *ptrIy * *ptrIy, *ptrIx * *ptrIy);</div>
+<div class="line"><span class="lineno">  182</span>    }</div>
+<div class="line"><span class="lineno">  183</span> </div>
+<div class="line"><span class="lineno">  184</span>    <span class="comment">//Calcula la suma acumulada</span></div>
+<div class="line"><span class="lineno">  185</span>    <a class="code hl_function" href="DeteccionEsquinasCS_8cpp.html#a1ad4cc8aad93cec201fa68e59c7b359f">cumSum</a>(G, cumG);</div>
+<div class="line"><span class="lineno">  186</span> </div>
+<div class="line"><span class="lineno">  187</span>    <span class="comment">//Evalua la función de Harris para cada pixel. Se usa la matriz de la suma acumulada de los componentes de la matriz G para  estimatar su suma sobre la ventana W.</span></div>
+<div class="line"><span class="lineno">  188</span>    <span class="keywordflow">for</span> (i = y0; i &lt; y1; ++i)</div>
+<div class="line"><span class="lineno">  189</span>    {</div>
+<div class="line"><span class="lineno">  190</span>        ptrC0 = C.ptr&lt;<span class="keywordtype">double</span>&gt;(i) + x0;</div>
+<div class="line"><span class="lineno">  191</span>        <span class="keywordflow">for</span> (j = x0; j &lt; x1; ++j, ptrC0++, ++ptrg0, ++ptrg1)</div>
+<div class="line"><span class="lineno">  192</span>        {</div>
+<div class="line"><span class="lineno">  193</span>             <span class="comment">//Calcula la suma con los elementos de la ventana</span></div>
+<div class="line"><span class="lineno">  194</span>             g = cumG.at&lt;Vec3d&gt; (i+w2, j+w2) +cumG.at&lt;Vec3d&gt; (i-w2-1,j-w2-1) - cumG.at&lt;Vec3d&gt;(i+w2,j-w2-1)-cumG.at&lt;Vec3d&gt;(i-w2-1,j+w2);</div>
+<div class="line"><span class="lineno">  195</span>            <span class="comment">//Evalua la funcion del detector de esquinas de Harris.</span></div>
+<div class="line"><span class="lineno">  196</span>            *ptrC0 = (g[0]*g[1]-g[2]*g[2]) - k * pow((g[0]+g[1]),2);</div>
+<div class="line"><span class="lineno">  197</span>        }</div>
+<div class="line"><span class="lineno">  198</span>    }</div>
+<div class="line"><span class="lineno">  199</span>}</div>
+<div class="ttc" id="aDeteccionEsquinasCS_8cpp_html_a1ad4cc8aad93cec201fa68e59c7b359f"><div class="ttname"><a href="DeteccionEsquinasCS_8cpp.html#a1ad4cc8aad93cec201fa68e59c7b359f">cumSum</a></div><div class="ttdeci">void cumSum(Mat_&lt; _Tp &gt; &amp;src, Mat_&lt; _Tp &gt; &amp;dst)</div><div class="ttdoc">Esta función construye la matriz de &quot;acumulación&quot; de una matriz dada. Una matriz de acumulación conti...</div><div class="ttdef"><b>Definition</b> <a href="DeteccionEsquinasCS_8cpp_source.html#l00103">DeteccionEsquinasCS.cpp:103</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a6a187f2ad0c45dc8868860243d782ca1" name="a6a187f2ad0c45dc8868860243d782ca1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6a187f2ad0c45dc8868860243d782ca1">&#9670;&#160;</a></span>kChange()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void kChange </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>pos</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>data</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Esta funcion modifica el valor del parámetro k, almacenado en una estructura del tipo <a class="el" href="structHarrisData.html">HarrisData</a>. Esta funcion es invocada indirectamente por el usuario al interactuar con la barra deslizante. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">int</td><td>pos -&gt; La posicion de la barra deslizante al momento de ser invocada. </td></tr>
+    <tr><td class="paramname">void</td><td>*data -&gt; Apuntador genérico a los datos. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definición en la línea <a class="el" href="DeteccionEsquinasCS_8cpp_source.html#l00232">232</a> del archivo <a class="el" href="DeteccionEsquinasCS_8cpp_source.html">DeteccionEsquinasCS.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  233</span>{</div>
+<div class="line"><span class="lineno">  234</span>    <a class="code hl_struct" href="structHarrisData.html">HarrisData</a> *H = (<a class="code hl_struct" href="structHarrisData.html">HarrisData</a> *)data;</div>
+<div class="line"><span class="lineno">  235</span> </div>
+<div class="line"><span class="lineno">  236</span>    H-&gt;<a class="code hl_variable" href="structHarrisData.html#ac8a270bda1a0784095b5ec578129c28a">k</a> = (pos + 0.5) * H-&gt;<a class="code hl_variable" href="structHarrisData.html#a02945762c70492fa9f28d149f92023f4">kInc</a>;</div>
+<div class="line"><span class="lineno">  237</span>    cout &lt;&lt; <span class="stringliteral">&quot;El parámetro k es igual a: &quot;</span> &lt;&lt; H-&gt;k &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">  238</span>    cout.flush();</div>
+<div class="line"><span class="lineno">  239</span>}</div>
+<div class="ttc" id="astructHarrisData_html"><div class="ttname"><a href="structHarrisData.html">HarrisData</a></div><div class="ttdef"><b>Definition</b> <a href="DeteccionEsquinasCS_8cpp_source.html#l00056">DeteccionEsquinasCS.cpp:57</a></div></div>
+<div class="ttc" id="astructHarrisData_html_a02945762c70492fa9f28d149f92023f4"><div class="ttname"><a href="structHarrisData.html#a02945762c70492fa9f28d149f92023f4">HarrisData::kInc</a></div><div class="ttdeci">double kInc</div><div class="ttdoc">Almacena la razon de incremento utilizada por el control deslizante.</div><div class="ttdef"><b>Definition</b> <a href="DeteccionEsquinasCS_8cpp_source.html#l00060">DeteccionEsquinasCS.cpp:60</a></div></div>
+<div class="ttc" id="astructHarrisData_html_ac8a270bda1a0784095b5ec578129c28a"><div class="ttname"><a href="structHarrisData.html#ac8a270bda1a0784095b5ec578129c28a">HarrisData::k</a></div><div class="ttdeci">double k</div><div class="ttdoc">Almacena el factor k del detector de esquinas de Harris.</div><div class="ttdef"><b>Definition</b> <a href="DeteccionEsquinasCS_8cpp_source.html#l00059">DeteccionEsquinasCS.cpp:59</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a3c04138a5bfe5d72780bb7e82a18e627" name="a3c04138a5bfe5d72780bb7e82a18e627"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3c04138a5bfe5d72780bb7e82a18e627">&#9670;&#160;</a></span>main()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int main </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>argc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char **&#160;</td>
+          <td class="paramname"><em>argv</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="DeteccionEsquinasCS_8cpp_source.html#l00252">252</a> del archivo <a class="el" href="DeteccionEsquinasCS_8cpp_source.html">DeteccionEsquinasCS.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  253</span>{</div>
+<div class="line"><span class="lineno">  254</span>    Mat frame, grayFrame, qframe;</div>
+<div class="line"><span class="lineno">  255</span>    Mat Outh, Outv, Corners, Out;</div>
+<div class="line"><span class="lineno">  256</span>    <span class="keywordtype">double</span> scaleX, scaleY;</div>
+<div class="line"><span class="lineno">  257</span>    String inputName;</div>
+<div class="line"><span class="lineno">  258</span>    <span class="keywordtype">bool</span> first;</div>
+<div class="line"><span class="lineno">  259</span>    <a class="code hl_struct" href="structfilterData.html">filterData</a> fd;</div>
+<div class="line"><span class="lineno">  260</span>    <a class="code hl_struct" href="structHarrisData.html">HarrisData</a> hd;</div>
+<div class="line"><span class="lineno">  261</span>    <span class="keywordtype">int</span> slidePosS = (int)(1.0 / fd.<a class="code hl_variable" href="structfilterData.html#a7314e7ae22c00cf7ad0ca04354040d44">sInc</a>);</div>
+<div class="line"><span class="lineno">  262</span>    <span class="keywordtype">int</span> slidePosK = (int)(0.08 / hd.<a class="code hl_variable" href="structHarrisData.html#a02945762c70492fa9f28d149f92023f4">kInc</a>);</div>
+<div class="line"><span class="lineno">  263</span>    <span class="keywordtype">int</span> slidePosW = 5;</div>
+<div class="line"><span class="lineno">  264</span>    <span class="keyword">struct </span>timespec timeS, timeE;</div>
+<div class="line"><span class="lineno">  265</span>    <span class="keywordtype">double</span> endns, startns, timeMTransf;</div>
+<div class="line"><span class="lineno">  266</span> </div>
+<div class="line"><span class="lineno">  267</span>    <span class="keywordflow">if</span> (argc &lt; 2)</div>
+<div class="line"><span class="lineno">  268</span>    {</div>
+<div class="line"><span class="lineno">  269</span>        cerr &lt;&lt; <span class="stringliteral">&quot;Faltan Parámetros.&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">  270</span>        cerr &lt;&lt; <span class="stringliteral">&quot;Uso: DeteccionBordes NoCamara &quot;</span> &lt;&lt; endl &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">  271</span>        exit(1);</div>
+<div class="line"><span class="lineno">  272</span>    }</div>
+<div class="line"><span class="lineno">  273</span> </div>
+<div class="line"><span class="lineno">  274</span>    VideoCapture cap;</div>
+<div class="line"><span class="lineno">  275</span>    </div>
+<div class="line"><span class="lineno">  276</span>    <span class="keywordflow">if</span> (isdigit(argv[1][0]))</div>
+<div class="line"><span class="lineno">  277</span>       cap.open(atoi(argv[1]));  <span class="comment">//Abre la camara determinada por el primer parámtro que se le paso al programa </span></div>
+<div class="line"><span class="lineno">  278</span>   <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  279</span>      cap.open(argv[1]);</div>
+<div class="line"><span class="lineno">  280</span> </div>
+<div class="line"><span class="lineno">  281</span>    <span class="keywordflow">if</span>(!cap.isOpened())  <span class="comment">// Si no se tuvo éxito, termina el programa.</span></div>
+<div class="line"><span class="lineno">  282</span>        <span class="keywordflow">return</span> -1;</div>
+<div class="line"><span class="lineno">  283</span> </div>
+<div class="line"><span class="lineno">  284</span>    Mosaic M(Size(<a class="code hl_define" href="DeteccionEsquinasCS_8cpp.html#aa28ce514073243f20b2ad63bd15348bc">IM_WIDTH</a>, <a class="code hl_define" href="DeteccionEsquinasCS_8cpp.html#a3aad60d733afca4a443a5cc9506b22af">IM_HEIGHT</a>), 2, 2, 8, 8);</div>
+<div class="line"><span class="lineno">  285</span> </div>
+<div class="line"><span class="lineno">  286</span> </div>
+<div class="line"><span class="lineno">  287</span>    <span class="comment">//Definimos el tamaño de las imagenes a ser capturadas.</span></div>
+<div class="line"><span class="lineno">  288</span>    cap.set(CAP_PROP_FRAME_WIDTH, <a class="code hl_define" href="DeteccionEsquinasCS_8cpp.html#aa28ce514073243f20b2ad63bd15348bc">IM_WIDTH</a>);</div>
+<div class="line"><span class="lineno">  289</span>    cap.set(CAP_PROP_FRAME_HEIGHT, <a class="code hl_define" href="DeteccionEsquinasCS_8cpp.html#a3aad60d733afca4a443a5cc9506b22af">IM_HEIGHT</a>);</div>
+<div class="line"><span class="lineno">  290</span> </div>
+<div class="line"><span class="lineno">  291</span>    <span class="comment">//Encontramos la razon entre el tamaño de imagenes que queremos y lo</span></div>
+<div class="line"><span class="lineno">  292</span>    <span class="comment">//que obtenemos en realidad. Esto es necesario para el caso que no</span></div>
+<div class="line"><span class="lineno">  293</span>    <span class="comment">//se pueda modificar el tamaño de la imagen de captura. Estas razones </span></div>
+<div class="line"><span class="lineno">  294</span>    <span class="comment">//servirán mas adelante para escalar el tamaño de las imagenes adecuadas.</span></div>
+<div class="line"><span class="lineno">  295</span>    scaleX = (double)<a class="code hl_define" href="DeteccionEsquinasCS_8cpp.html#aa28ce514073243f20b2ad63bd15348bc">IM_WIDTH</a> / cap.get(CAP_PROP_FRAME_WIDTH);</div>
+<div class="line"><span class="lineno">  296</span>    scaleY = (double)<a class="code hl_define" href="DeteccionEsquinasCS_8cpp.html#a3aad60d733afca4a443a5cc9506b22af">IM_HEIGHT</a> / cap.get(CAP_PROP_FRAME_HEIGHT);</div>
+<div class="line"><span class="lineno">  297</span> </div>
+<div class="line"><span class="lineno">  298</span>    <span class="comment">//Abrimos las ventanas para mostrar los resultados.</span></div>
+<div class="line"><span class="lineno">  299</span>    namedWindow( <span class="stringliteral">&quot;Mosaico&quot;</span>, 1 );</div>
+<div class="line"><span class="lineno">  300</span> </div>
+<div class="line"><span class="lineno">  301</span>    <span class="comment">//Invocamos de manera manual la funcion stdChange, para inicializar filtros.</span></div>
+<div class="line"><span class="lineno">  302</span>    <a class="code hl_function" href="DeteccionEsquinasCS_8cpp.html#ad5b5a12f78acad13124e6321536ceec4">stdChange</a>(slidePosS, (<span class="keywordtype">void</span> *)&amp;fd);</div>
+<div class="line"><span class="lineno">  303</span> </div>
+<div class="line"><span class="lineno">  304</span>    <span class="comment">//Creamos la barra deslizante con la que el usuario controlará el valor de la desviacion estandar y la asignamos a la ventana &quot;Mosaico&quot;.</span></div>
+<div class="line"><span class="lineno">  305</span>    createTrackbar(<span class="stringliteral">&quot;std&quot;</span>, <span class="stringliteral">&quot;Mosaico&quot;</span>, &amp;slidePosS, <a class="code hl_define" href="DeteccionEsquinasCS_8cpp.html#a939b51147ef1ab77b59643dea461ba5f">S_SLIDE_MAX</a>, <a class="code hl_function" href="DeteccionEsquinasCS_8cpp.html#ad5b5a12f78acad13124e6321536ceec4">stdChange</a>, (<span class="keywordtype">void</span> *)&amp;fd);</div>
+<div class="line"><span class="lineno">  306</span> </div>
+<div class="line"><span class="lineno">  307</span>    <span class="comment">//Invocamos de manera manual la funcion kChange.</span></div>
+<div class="line"><span class="lineno">  308</span>    <a class="code hl_function" href="DeteccionEsquinasCS_8cpp.html#a6a187f2ad0c45dc8868860243d782ca1">kChange</a>(slidePosK, (<span class="keywordtype">void</span> *)&amp;hd);</div>
+<div class="line"><span class="lineno">  309</span>    <span class="comment">//Creamos la barra deslizante con la que el usuario controlará el valor del parámetro  k yla asignamos a la ventana &quot;Mosaico&quot;.</span></div>
+<div class="line"><span class="lineno">  310</span>    createTrackbar(<span class="stringliteral">&quot;k&quot;</span>, <span class="stringliteral">&quot;Mosaico&quot;</span>, &amp;slidePosK, <a class="code hl_define" href="DeteccionEsquinasCS_8cpp.html#a2f4f46b02b61918b9ce0de77043af942">K_SLIDE_MAX</a>, <a class="code hl_function" href="DeteccionEsquinasCS_8cpp.html#a6a187f2ad0c45dc8868860243d782ca1">kChange</a>, (<span class="keywordtype">void</span> *)&amp;hd);</div>
+<div class="line"><span class="lineno">  311</span> </div>
+<div class="line"><span class="lineno">  312</span>    <span class="comment">//Invocamos de manera manual la funcion wChange.</span></div>
+<div class="line"><span class="lineno">  313</span>    <a class="code hl_function" href="DeteccionEsquinasCS_8cpp.html#a8836cca009f6227f83589d7da504bcd0">wChange</a>(slidePosW, (<span class="keywordtype">void</span> *)&amp;hd);</div>
+<div class="line"><span class="lineno">  314</span>    <span class="comment">//Creamos la barra deslizante con la que el usuario controlará el valor del parámetro W  y la asignamos a la ventana &quot;Mosaico&quot;.</span></div>
+<div class="line"><span class="lineno">  315</span>    createTrackbar(<span class="stringliteral">&quot;w&quot;</span>, <span class="stringliteral">&quot;Mosaico&quot;</span>, &amp;slidePosW, <a class="code hl_define" href="DeteccionEsquinasCS_8cpp.html#a3a0bd0af99990430d25417c5e3cd2c1b">W_SLIDE_MAX</a>, <a class="code hl_function" href="DeteccionEsquinasCS_8cpp.html#a8836cca009f6227f83589d7da504bcd0">wChange</a>, (<span class="keywordtype">void</span> *)&amp;hd);</div>
+<div class="line"><span class="lineno">  316</span> </div>
+<div class="line"><span class="lineno">  317</span> </div>
+<div class="line"><span class="lineno">  318</span> </div>
+<div class="line"><span class="lineno">  319</span>    first = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  320</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> cont=0;;cont++)</div>
+<div class="line"><span class="lineno">  321</span>    {</div>
+<div class="line"><span class="lineno">  322</span>        <span class="comment">//Capturamos una imagen, y validamos que haya funcionado la operacion.</span></div>
+<div class="line"><span class="lineno">  323</span>        cap &gt;&gt; frame;</div>
+<div class="line"><span class="lineno">  324</span>        <span class="keywordflow">if</span> (frame.empty() )</div>
+<div class="line"><span class="lineno">  325</span>            <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  326</span> </div>
+<div class="line"><span class="lineno">  327</span>        <span class="comment">//En la primera iteración inicializamos las imagenes que usaremos para</span></div>
+<div class="line"><span class="lineno">  328</span>        <span class="comment">//almacenar resultados.</span></div>
+<div class="line"><span class="lineno">  329</span>        <span class="keywordflow">if</span> (first)</div>
+<div class="line"><span class="lineno">  330</span>        {</div>
+<div class="line"><span class="lineno">  331</span>            Size sz(<a class="code hl_define" href="DeteccionEsquinasCS_8cpp.html#aa28ce514073243f20b2ad63bd15348bc">IM_WIDTH</a>, <a class="code hl_define" href="DeteccionEsquinasCS_8cpp.html#a3aad60d733afca4a443a5cc9506b22af">IM_HEIGHT</a>);</div>
+<div class="line"><span class="lineno">  332</span> </div>
+<div class="line"><span class="lineno">  333</span>            Outh= Mat::zeros(sz, CV_64FC1);</div>
+<div class="line"><span class="lineno">  334</span>            Outv = Mat::zeros(sz, CV_64FC1);</div>
+<div class="line"><span class="lineno">  335</span>            Corners = Mat::zeros(sz, CV_64FC1);</div>
+<div class="line"><span class="lineno">  336</span>            qframe = Mat::zeros(sz, frame.type());</div>
+<div class="line"><span class="lineno">  337</span>            first = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  338</span>        }</div>
+<div class="line"><span class="lineno">  339</span> </div>
+<div class="line"><span class="lineno">  340</span>        <span class="comment">//en dado caso que las imagenes capturado no sean del tamaño deseado</span></div>
+<div class="line"><span class="lineno">  341</span>        <span class="comment">//cambia el tamaño. y convierte la imagen de color a una imagen en tonos</span></div>
+<div class="line"><span class="lineno">  342</span>        <span class="comment">//de gris.</span></div>
+<div class="line"><span class="lineno">  343</span>         <span class="keywordflow">if</span> (scaleX != 1. || scaleY != 1.)</div>
+<div class="line"><span class="lineno">  344</span>         {</div>
+<div class="line"><span class="lineno">  345</span>            resize(frame, qframe, Size(), scaleX, scaleY, INTER_AREA);</div>
+<div class="line"><span class="lineno">  346</span>            cvtColor (qframe, grayFrame, COLOR_BGR2GRAY);</div>
+<div class="line"><span class="lineno">  347</span>         }</div>
+<div class="line"><span class="lineno">  348</span>         <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  349</span>            cvtColor (frame, grayFrame, COLOR_BGR2GRAY);</div>
+<div class="line"><span class="lineno">  350</span> </div>
+<div class="line"><span class="lineno">  351</span>        <span class="comment">//Despliega la imagen capturada en una ventana y conviertela a </span></div>
+<div class="line"><span class="lineno">  352</span>        <span class="comment">//una respresentacion de dobles.</span></div>
+<div class="line"><span class="lineno">  353</span>        M.setFigure(grayFrame, 0, 0);</div>
+<div class="line"><span class="lineno">  354</span>        grayFrame.convertTo (grayFrame, CV_64FC1);</div>
+<div class="line"><span class="lineno">  355</span> </div>
+<div class="line"><span class="lineno">  356</span> </div>
+<div class="line"><span class="lineno">  357</span>        <span class="comment">//Aplica filtros de la primera derivada de la Gausssiano, y calcula su</span></div>
+<div class="line"><span class="lineno">  358</span>        <span class="comment">//representacion en terminos de magnitud y orientación  (fase).  Normaliza</span></div>
+<div class="line"><span class="lineno">  359</span>        <span class="comment">//los resultados, y convierte a una imagen CV_8UC1 y despliega.</span></div>
+<div class="line"><span class="lineno">  360</span>        filter2D (grayFrame, Outh, -1, fd.<a class="code hl_variable" href="structfilterData.html#a7a684dbccbd38d0f2068236941d6dea8">DGh</a>);</div>
+<div class="line"><span class="lineno">  361</span>        filter2D (grayFrame, Outv, -1, fd.<a class="code hl_variable" href="structfilterData.html#a4f3cc8052617b0d96112f41dee9c2d47">DGv</a>);</div>
+<div class="line"><span class="lineno">  362</span> </div>
+<div class="line"><span class="lineno">  363</span>        clock_gettime (CLOCK_REALTIME, &amp;timeS);</div>
+<div class="line"><span class="lineno">  364</span>        <a class="code hl_function" href="DeteccionEsquinasCS_8cpp.html#a5b5ddd4fc2f158d1bac2ff5a05666118">findCorners</a> (Outh, Outv, Corners, hd.<a class="code hl_variable" href="structHarrisData.html#a2dd51e03005d5cb52315290d27f61870">W</a>, hd.<a class="code hl_variable" href="structHarrisData.html#ac8a270bda1a0784095b5ec578129c28a">k</a>);</div>
+<div class="line"><span class="lineno">  365</span>        clock_gettime (CLOCK_REALTIME, &amp;timeE);</div>
+<div class="line"><span class="lineno">  366</span>        startns = (double)(timeS.tv_sec)*1e9 + (double)(timeS.tv_nsec);</div>
+<div class="line"><span class="lineno">  367</span>        endns = (double)(timeE.tv_sec)*1e9 + (double)(timeE.tv_nsec);</div>
+<div class="line"><span class="lineno">  368</span>        timeMTransf = (endns -startns)/10;</div>
+<div class="line"><span class="lineno">  369</span>        cout&lt;&lt; <span class="stringliteral">&quot;Tiempo: &quot;</span> &lt;&lt; timeMTransf &lt;&lt; <span class="stringliteral">&quot; nano-segundos&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">  370</span>        cout.flush();</div>
+<div class="line"><span class="lineno">  371</span> </div>
+<div class="line"><span class="lineno">  372</span> </div>
+<div class="line"><span class="lineno">  373</span> </div>
+<div class="line"><span class="lineno">  374</span>        normalize(Outh, Outh, 0, 255, NORM_MINMAX);</div>
+<div class="line"><span class="lineno">  375</span>        normalize(Outv, Outv, 0, 255, NORM_MINMAX);</div>
+<div class="line"><span class="lineno">  376</span>        normalize(Corners, Corners, 0, 255, NORM_MINMAX);</div>
+<div class="line"><span class="lineno">  377</span>        Outh.convertTo (Out, CV_8UC1);</div>
+<div class="line"><span class="lineno">  378</span>        M.setFigure(Out, 0, 1);</div>
+<div class="line"><span class="lineno">  379</span>        Outv.convertTo (Out, CV_8UC1);</div>
+<div class="line"><span class="lineno">  380</span>        M.setFigure(Out, 1, 0);</div>
+<div class="line"><span class="lineno">  381</span>        Corners.convertTo (Out, CV_8UC1);</div>
+<div class="line"><span class="lineno">  382</span>        M.setFigure(Out, 1, 1);</div>
+<div class="line"><span class="lineno">  383</span> </div>
+<div class="line"><span class="lineno">  384</span>        M.show(<span class="stringliteral">&quot;Mosaico&quot;</span>);</div>
+<div class="line"><span class="lineno">  385</span> </div>
+<div class="line"><span class="lineno">  386</span>        <span class="comment">//Si el usuario oprime una tecla, termina el ciclo.</span></div>
+<div class="line"><span class="lineno">  387</span>        <span class="keywordflow">if</span> (waitKeyEx( 30 ) &gt;= 0 )</div>
+<div class="line"><span class="lineno">  388</span>            <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  389</span>          </div>
+<div class="line"><span class="lineno">  390</span>    }</div>
+<div class="line"><span class="lineno">  391</span> </div>
+<div class="line"><span class="lineno">  392</span>    <span class="comment">//Cierra ventanas que fueron abiertas.</span></div>
+<div class="line"><span class="lineno">  393</span>    destroyWindow (<span class="stringliteral">&quot;Mosaico&quot;</span>);</div>
+<div class="line"><span class="lineno">  394</span> </div>
+<div class="line"><span class="lineno">  395</span>    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">  396</span>}</div>
+<div class="ttc" id="aDeteccionEsquinasCS_8cpp_html_a2f4f46b02b61918b9ce0de77043af942"><div class="ttname"><a href="DeteccionEsquinasCS_8cpp.html#a2f4f46b02b61918b9ce0de77043af942">K_SLIDE_MAX</a></div><div class="ttdeci">#define K_SLIDE_MAX</div><div class="ttdoc">El número máximo de pasos que tiene el control de barra deslizante asociado a la constante K del dete...</div><div class="ttdef"><b>Definition</b> <a href="DeteccionEsquinasCS_8cpp_source.html#l00017">DeteccionEsquinasCS.cpp:17</a></div></div>
+<div class="ttc" id="aDeteccionEsquinasCS_8cpp_html_a3a0bd0af99990430d25417c5e3cd2c1b"><div class="ttname"><a href="DeteccionEsquinasCS_8cpp.html#a3a0bd0af99990430d25417c5e3cd2c1b">W_SLIDE_MAX</a></div><div class="ttdeci">#define W_SLIDE_MAX</div><div class="ttdoc">El número máximo de pasos que tiene el control de barra deslizante asociado a la constante K del dete...</div><div class="ttdef"><b>Definition</b> <a href="DeteccionEsquinasCS_8cpp_source.html#l00020">DeteccionEsquinasCS.cpp:20</a></div></div>
+<div class="ttc" id="aDeteccionEsquinasCS_8cpp_html_a3aad60d733afca4a443a5cc9506b22af"><div class="ttname"><a href="DeteccionEsquinasCS_8cpp.html#a3aad60d733afca4a443a5cc9506b22af">IM_HEIGHT</a></div><div class="ttdeci">#define IM_HEIGHT</div><div class="ttdoc">Lo alto de la imagen.</div><div class="ttdef"><b>Definition</b> <a href="DeteccionEsquinasCS_8cpp_source.html#l00023">DeteccionEsquinasCS.cpp:23</a></div></div>
+<div class="ttc" id="aDeteccionEsquinasCS_8cpp_html_a5b5ddd4fc2f158d1bac2ff5a05666118"><div class="ttname"><a href="DeteccionEsquinasCS_8cpp.html#a5b5ddd4fc2f158d1bac2ff5a05666118">findCorners</a></div><div class="ttdeci">void findCorners(Mat &amp;Ix, Mat Iy, Mat &amp;C, int w, double k)</div><div class="ttdoc">Esta funcion calcula la medida del detector de esquinas de Harris definida por la siguiente fórmula: ...</div><div class="ttdef"><b>Definition</b> <a href="DeteccionEsquinasCS_8cpp_source.html#l00149">DeteccionEsquinasCS.cpp:149</a></div></div>
+<div class="ttc" id="aDeteccionEsquinasCS_8cpp_html_a6a187f2ad0c45dc8868860243d782ca1"><div class="ttname"><a href="DeteccionEsquinasCS_8cpp.html#a6a187f2ad0c45dc8868860243d782ca1">kChange</a></div><div class="ttdeci">void kChange(int pos, void *data)</div><div class="ttdoc">Esta funcion modifica el valor del parámetro k, almacenado en una estructura del tipo HarrisData....</div><div class="ttdef"><b>Definition</b> <a href="DeteccionEsquinasCS_8cpp_source.html#l00232">DeteccionEsquinasCS.cpp:232</a></div></div>
+<div class="ttc" id="aDeteccionEsquinasCS_8cpp_html_a8836cca009f6227f83589d7da504bcd0"><div class="ttname"><a href="DeteccionEsquinasCS_8cpp.html#a8836cca009f6227f83589d7da504bcd0">wChange</a></div><div class="ttdeci">void wChange(int pos, void *data)</div><div class="ttdoc">Esta funcion modifica el valor del parámetro w, almacenado en una estructura del tipo HarrisData....</div><div class="ttdef"><b>Definition</b> <a href="DeteccionEsquinasCS_8cpp_source.html#l00247">DeteccionEsquinasCS.cpp:247</a></div></div>
+<div class="ttc" id="aDeteccionEsquinasCS_8cpp_html_a939b51147ef1ab77b59643dea461ba5f"><div class="ttname"><a href="DeteccionEsquinasCS_8cpp.html#a939b51147ef1ab77b59643dea461ba5f">S_SLIDE_MAX</a></div><div class="ttdeci">#define S_SLIDE_MAX</div><div class="ttdoc">El número máximo de pasos que tiene el control de barra deslizante asociuada a la desviación estandar...</div><div class="ttdef"><b>Definition</b> <a href="DeteccionEsquinasCS_8cpp_source.html#l00014">DeteccionEsquinasCS.cpp:14</a></div></div>
+<div class="ttc" id="aDeteccionEsquinasCS_8cpp_html_aa28ce514073243f20b2ad63bd15348bc"><div class="ttname"><a href="DeteccionEsquinasCS_8cpp.html#aa28ce514073243f20b2ad63bd15348bc">IM_WIDTH</a></div><div class="ttdeci">#define IM_WIDTH</div><div class="ttdoc">El ancho de la imagen.</div><div class="ttdef"><b>Definition</b> <a href="DeteccionEsquinasCS_8cpp_source.html#l00022">DeteccionEsquinasCS.cpp:22</a></div></div>
+<div class="ttc" id="aDeteccionEsquinasCS_8cpp_html_ad5b5a12f78acad13124e6321536ceec4"><div class="ttname"><a href="DeteccionEsquinasCS_8cpp.html#ad5b5a12f78acad13124e6321536ceec4">stdChange</a></div><div class="ttdeci">void stdChange(int pos, void *data)</div><div class="ttdoc">Esta funcion modifica el valor de la desviación estandar y los filtros almacenados en (filterData *)d...</div><div class="ttdef"><b>Definition</b> <a href="DeteccionEsquinasCS_8cpp_source.html#l00209">DeteccionEsquinasCS.cpp:209</a></div></div>
+<div class="ttc" id="astructHarrisData_html_a2dd51e03005d5cb52315290d27f61870"><div class="ttname"><a href="structHarrisData.html#a2dd51e03005d5cb52315290d27f61870">HarrisData::W</a></div><div class="ttdeci">int W</div><div class="ttdoc">El ancho de la ventana de computo.</div><div class="ttdef"><b>Definition</b> <a href="DeteccionEsquinasCS_8cpp_source.html#l00058">DeteccionEsquinasCS.cpp:58</a></div></div>
+<div class="ttc" id="astructfilterData_html"><div class="ttname"><a href="structfilterData.html">filterData</a></div><div class="ttdoc">Esta estructura agrupa los filtros que se van a aplicar a la imagen, la desviación estandar con la qu...</div><div class="ttdef"><b>Definition</b> <a href="DeteccionEsquinasCS_8cpp_source.html#l00034">DeteccionEsquinasCS.cpp:35</a></div></div>
+<div class="ttc" id="astructfilterData_html_a4f3cc8052617b0d96112f41dee9c2d47"><div class="ttname"><a href="structfilterData.html#a4f3cc8052617b0d96112f41dee9c2d47">filterData::DGv</a></div><div class="ttdeci">Mat DGv</div><div class="ttdoc">Almacena filtro para estimar la derivada unidimensional de la Gaussiana en direccion vertical.</div><div class="ttdef"><b>Definition</b> <a href="DeteccionEsquinasCS_8cpp_source.html#l00038">DeteccionEsquinasCS.cpp:38</a></div></div>
+<div class="ttc" id="astructfilterData_html_a7314e7ae22c00cf7ad0ca04354040d44"><div class="ttname"><a href="structfilterData.html#a7314e7ae22c00cf7ad0ca04354040d44">filterData::sInc</a></div><div class="ttdeci">double sInc</div><div class="ttdoc">Almacena la razon de incremento utilizada por el control deslizante.</div><div class="ttdef"><b>Definition</b> <a href="DeteccionEsquinasCS_8cpp_source.html#l00042">DeteccionEsquinasCS.cpp:42</a></div></div>
+<div class="ttc" id="astructfilterData_html_a7a684dbccbd38d0f2068236941d6dea8"><div class="ttname"><a href="structfilterData.html#a7a684dbccbd38d0f2068236941d6dea8">filterData::DGh</a></div><div class="ttdeci">Mat DGh</div><div class="ttdoc">Almacena filtro para estimar la derivada unidimensional de la Gaussiana en direccion horizontal.</div><div class="ttdef"><b>Definition</b> <a href="DeteccionEsquinasCS_8cpp_source.html#l00036">DeteccionEsquinasCS.cpp:36</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ad5b5a12f78acad13124e6321536ceec4" name="ad5b5a12f78acad13124e6321536ceec4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad5b5a12f78acad13124e6321536ceec4">&#9670;&#160;</a></span>stdChange()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void stdChange </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>pos</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>data</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Esta funcion modifica el valor de la desviación estandar y los filtros almacenados en (<a class="el" href="structfilterData.html" title="Esta estructura agrupa los filtros que se van a aplicar a la imagen, la desviación estandar con la qu...">filterData</a> *)data. Esta funcion es invocada indirectamente por el usuario al interactuar con la barra deslizante. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">int</td><td>pos -&gt; La posicion de la barra deslizante al momento de ser invocada. </td></tr>
+    <tr><td class="paramname">void</td><td>*data -&gt; Apuntador genérico a los datos. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definición en la línea <a class="el" href="DeteccionEsquinasCS_8cpp_source.html#l00209">209</a> del archivo <a class="el" href="DeteccionEsquinasCS_8cpp_source.html">DeteccionEsquinasCS.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  210</span>{</div>
+<div class="line"><span class="lineno">  211</span>    <a class="code hl_struct" href="structfilterData.html">filterData</a> *fd = (<a class="code hl_struct" href="structfilterData.html">filterData</a> *)data;</div>
+<div class="line"><span class="lineno">  212</span> </div>
+<div class="line"><span class="lineno">  213</span>    <span class="comment">//Calculamos el valor de fd-&gt;s en términos de la posicion de la barra.</span></div>
+<div class="line"><span class="lineno">  214</span>    fd-&gt;<a class="code hl_variable" href="structfilterData.html#ad62e712560f6344b96d4c080a2ba9c92">s</a> = (pos + 0.5) * fd-&gt;<a class="code hl_variable" href="structfilterData.html#a7314e7ae22c00cf7ad0ca04354040d44">sInc</a>;</div>
+<div class="line"><span class="lineno">  215</span> </div>
+<div class="line"><span class="lineno">  216</span>    <span class="comment">//Calculamos los filtros unidimensionales de la derivada de la Gaussiana,</span></div>
+<div class="line"><span class="lineno">  217</span>    <span class="comment">//(Horizontal y Vertical).</span></div>
+<div class="line"><span class="lineno">  218</span>    <a class="code hl_function" href="DeteccionEsquinasCS_8cpp.html#abadfd1bea7750a41a0a80052d36b915b">calculoFiltroDiffGaussiano</a> (fd-&gt;DGh, fd-&gt;s);</div>
+<div class="line"><span class="lineno">  219</span>    fd-&gt;DGv = fd-&gt;DGh.clone();</div>
+<div class="line"><span class="lineno">  220</span>    fd-&gt;DGv=fd-&gt;DGv.t();</div>
+<div class="line"><span class="lineno">  221</span>    </div>
+<div class="line"><span class="lineno">  222</span>    cout &lt;&lt; <span class="stringliteral">&quot;La desviación estandar es igual a: &quot;</span> &lt;&lt; fd-&gt;s &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">  223</span>}</div>
+<div class="ttc" id="aDeteccionEsquinasCS_8cpp_html_abadfd1bea7750a41a0a80052d36b915b"><div class="ttname"><a href="DeteccionEsquinasCS_8cpp.html#abadfd1bea7750a41a0a80052d36b915b">calculoFiltroDiffGaussiano</a></div><div class="ttdeci">void calculoFiltroDiffGaussiano(Mat &amp;DG, float s)</div><div class="ttdoc">Esta funcion calcula filtro unidimensional horizontal que codifica los parametros de la derivada de u...</div><div class="ttdef"><b>Definition</b> <a href="DeteccionEsquinasCS_8cpp_source.html#l00076">DeteccionEsquinasCS.cpp:76</a></div></div>
+<div class="ttc" id="astructfilterData_html_ad62e712560f6344b96d4c080a2ba9c92"><div class="ttname"><a href="structfilterData.html#ad62e712560f6344b96d4c080a2ba9c92">filterData::s</a></div><div class="ttdeci">double s</div><div class="ttdoc">Almacena la desviación estandar.</div><div class="ttdef"><b>Definition</b> <a href="DeteccionEsquinasCS_8cpp_source.html#l00040">DeteccionEsquinasCS.cpp:40</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a8836cca009f6227f83589d7da504bcd0" name="a8836cca009f6227f83589d7da504bcd0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8836cca009f6227f83589d7da504bcd0">&#9670;&#160;</a></span>wChange()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void wChange </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>pos</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>data</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Esta funcion modifica el valor del parámetro w, almacenado en una estructura del tipo <a class="el" href="structHarrisData.html">HarrisData</a>. Esta funcion es invocada indirectamente por el usuario al interactuar con la barra deslizante. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">int</td><td>pos -&gt; La posicion de la barra deslizante al momento de ser invocada. </td></tr>
+    <tr><td class="paramname">void</td><td>*data -&gt; Apuntador genérico a los datos. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definición en la línea <a class="el" href="DeteccionEsquinasCS_8cpp_source.html#l00247">247</a> del archivo <a class="el" href="DeteccionEsquinasCS_8cpp_source.html">DeteccionEsquinasCS.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  248</span>{</div>
+<div class="line"><span class="lineno">  249</span>    ((<a class="code hl_struct" href="structHarrisData.html">HarrisData</a> *)data)-&gt;W = pos;</div>
+<div class="line"><span class="lineno">  250</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generado el Lunes, 20 de abril de 2026 12:45:12 para Deteccion de Esquinas de Harris por&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>
